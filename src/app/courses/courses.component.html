@@ -1,0 +1,40 @@
+<div class="container">
+  <h1>
+    List of Courses from firebase
+  </h1>
+  <div>
+    <button class="btn btn-success" (click)="ngOnDestroy()">GO OFFLINE</button>
+    (after click please refresh page for database updation
+    after click)
+  </div>
+  <ul *ngFor='let course of courses'>
+    <li *ngIf='course.title'>
+      <span>
+        {{course.title}}
+        <button class="btn btn-primary" (click)="update(course)">
+          EDIT
+        </button>
+        <button class="btn btn-primary" (click)="delete(course)">
+          Delete
+        </button>
+      </span>
+    </li>
+    <li *ngIf='!course.title'>
+      <span>
+        {{course}}
+        <button class="btn btn-primary" (click)="update(course)">
+          EDIT
+        </button>
+      </span>
+    </li>
+  </ul>
+  <input type="text" placeholder="course with id" (keyup.enter)="onEnter(id)" #id><br>
+  <br>
+  <br>
+  <p>
+    {{course | json}}
+  </p>
+
+  <input type="text" placeholder="title" (keyup.enter)="onEnterTitle(title)" #title>
+
+</div>
